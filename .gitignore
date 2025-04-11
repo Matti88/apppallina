@@ -1,0 +1,12 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# VSCode settings
+.vscode/
+*.code-workspace
+
+# Generated files
+icon-*.png
+favicon-*.ico
+screenshot-*.png

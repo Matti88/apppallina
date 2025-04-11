@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moving Ball App</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/x-icon" href="favicon-16.ico" sizes="16x16">
+    <link rel="icon" type="image/x-icon" href="favicon-32.ico" sizes="32x32">
+    <meta name="theme-color" content="#ffffff">
+    <style>
+        #game-container {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            touch-action: none;
+            background-color: white;
+        }
+
+        #ball {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background-color: red;
+            border-radius: 50%;
+            cursor: move;
+            left: 0;
+            top: 0;
+            touch-action: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <div id="ball"></div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(registration => console.log('ServiceWorker registered'))
+                .catch(err => console.log('ServiceWorker registration failed:', err));
+        }
+    </script>
+</body>
+</html>
