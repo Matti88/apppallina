@@ -28,6 +28,12 @@
             left: 0;
             top: 0;
             touch-action: none;
+            /* Add padding for larger hit area */
+            padding: 20px;
+            /* Adjust position to account for padding */
+            margin: -20px;
+            /* Ensure the ball itself remains the same size */
+            background-clip: content-box;
         }
     </style>
 </head>
