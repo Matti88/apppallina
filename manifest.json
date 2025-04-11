@@ -2,7 +2,7 @@
     "name": "Ball Game",
     "short_name": "Ball",
     "description": "A simple ball moving game",
-    "start_url": "/",
+    "start_url": "/apppallina",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#ffffff",
