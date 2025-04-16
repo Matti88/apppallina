@@ -7,4 +7,4 @@ __pycache__/
 *.code-workspace
 
 # Generated files
-
+*.DS_Store

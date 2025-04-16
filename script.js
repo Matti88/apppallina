@@ -10,6 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let yOffset = 0;
     let activeTouchId = null;
 
+    // Rainbow colors array for the trail
+    const rainbowColors = [
+        '#FF0000', '#FF7F00', '#FFFF00', '#00FF00', 
+        '#0000FF', '#4B0082', '#8B00FF'
+    ];
+    let colorIndex = 0;
+
     // Mouse Event Listeners
     ball.addEventListener('mousedown', startDragging);
     document.addEventListener('mousemove', drag);
@@ -131,8 +138,31 @@ document.addEventListener('DOMContentLoaded', () => {
         setTranslate(currentX, currentY, ball);
     }
 
+    function createTrailParticle(x, y) {
+        const particle = document.createElement('div');
+        particle.className = 'trail-particle';
+        particle.style.width = '20px';
+        particle.style.height = '20px';
+        particle.style.backgroundColor = rainbowColors[colorIndex];
+        particle.style.left = `${x + 30}px`; // Center relative to ball
+        particle.style.top = `${y + 30}px`;  // Center relative to ball
+        
+        container.appendChild(particle);
+        colorIndex = (colorIndex + 1) % rainbowColors.length;
+
+        // Fade out and remove the particle
+        setTimeout(() => {
+            particle.style.opacity = '0';
+            setTimeout(() => particle.remove(), 800);
+        }, 100);
+    }
+
     function setTranslate(xPos, yPos, el) {
         el.style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
+        // Create trail particle when the ball moves
+        if (isDragging || Math.abs(xPos - initialX) > 5 || Math.abs(yPos - initialY) > 5) {
+            createTrailParticle(xPos, yPos);
+        }
     }
 
     function stopDragging(e) {
